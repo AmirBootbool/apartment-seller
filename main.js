@@ -1,5 +1,4 @@
-
-$("button").on("click", function () {
+$("button").on("click", function () {  // get values from each box on click
     let address = $("#addr-input").val()
     let minPrice = $("#min-p-input").val()
     let maxPrice = $("#max-p-input").val()
@@ -14,7 +13,10 @@ $("button").on("click", function () {
 const renderApts = function (apartments) {
     $("#results").empty()
     console.log(apartments) //array of apartments to render
-    //Your code goes here.
+    const source = $(`#results-template`).html()
+    const template = Handlebars.compile(source)
+    const newHtml = template({apartments})
+    $(`#results`).append(newHtml)
 }
 
 renderApts(apartments) //renders apartments when page loads
